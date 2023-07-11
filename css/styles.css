@@ -184,11 +184,29 @@ a {
   line-height: calc(16 / 14 * 100%);
   letter-spacing: 0.02em;
   color: inherit;
+  display: flex;
+  align-items: center;
 }
 .header-address a:hover,
 .header-address a:focus {
   color: var(--brend-color);
 }
+
+.header-address a::before {
+  content: "";
+  display: inline-block;
+  margin-right: 10px;
+}
+.header-address a:nth-child(1)::before {
+  background-image: url(../image/icon/header/envelope.png);
+  width: 16px;
+  height: 12px;
+} 
+.header-address a:nth-child(2)::before {
+  background-image: url(../image/icon/header/smartphone.png);
+  width: 10px;
+  height: 16px;
+} 
 /* ---------------------------- */
 .page {
   flex-grow: 1;
@@ -198,28 +216,40 @@ a {
 .hero {
   background-color: #2f303a;
   text-align: center;
+  display: block;
+  background-image: url(../image/hero/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.hero .container {
+  padding: 200px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .hero-title {
   font-weight: 900;
   font-size: 44px;
   line-height: calc(60 / 44 * 100%);
-  text-align: center;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--title-light);
   margin: 0 0 30px 0;
+  max-width: 696px;
 }
 .hero-btn {
-  display: inline-block;
+  display: flex;
+  min-height: 50px;
+  padding: 0 32px;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
   font-size: 16px;
   line-height: calc(30 / 14 * 100%);
-  text-align: center;
   letter-spacing: 0.06em;
   color: #ffffff;
-  padding: 10px 32px;
-  min-height: 50px;
-  min-width: 216px;
   background-color: #2196f3;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
