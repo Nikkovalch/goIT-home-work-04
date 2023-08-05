@@ -129,8 +129,6 @@ a {
 .header > .container {
   display: flex;
   align-items: center;
-
-  min-height: 83px;
 }
 .logo {
   display: inline-block;
@@ -146,8 +144,6 @@ a {
 }
 .header-menu {
   margin-left: 93px;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 .header-list {
   display: flex;
@@ -156,9 +152,10 @@ a {
   row-gap: 20px;
 }
 .header-item {
+  padding: 32px 0;
+  position: relative;
 }
 .header-link {
-  padding: 10px 0;
   font-weight: 500;
   line-height: calc(16 / 14 * 100%);
   letter-spacing: 0.02em;
@@ -168,6 +165,20 @@ a {
 .header-link:hover,
 .header-link:focus {
   color: var(--brend-color);
+}
+.active {
+  color: var(--brend-color);
+}
+
+.active::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--brend-color);
 }
 .header-address {
   padding: 0 0 0 20px;
@@ -190,26 +201,26 @@ a {
   justify-content: center;
 }
 .address-link:hover,
-.address-link:focus { 
-  color: #2196F3;
+.address-link:focus {
+  color: #2196f3;
 }
 /* -------svg------------------- */
 .header-icon {
   margin-right: 10px;
-  fill:#757575;
+  fill: #757575;
 }
-.header-icon.envelope{
+.header-icon.envelope {
   width: 16px;
   height: 12px;
 }
-.header-icon.smartphone{
+.header-icon.smartphone {
   width: 10px;
   height: 16px;
 }
 
 .address-link:hover .header-icon,
-.address-link:focus .header-icon{
-  fill: #2196F3;
+.address-link:focus .header-icon {
+  fill: #2196f3;
 }
 /* ---------------------------- */
 .page {
@@ -281,7 +292,7 @@ a {
 }
 
 .features-icon-block {
-  background-color: #F5F4FA;
+  background-color: #f5f4fa;
   width: 100%;
   height: 120px;
   display: flex;
@@ -319,6 +330,32 @@ a {
 }
 .box-item {
   padding: 0 15px;
+
+}
+
+.box-item-image {
+  position: relative;
+}
+.box-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.box-item-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: var(--title-light);
+  font-weight: 700;
+  letter-spacing: 0.42px;
+  text-transform: uppercase;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0;
+  background-color: rgba(47, 48, 58, 0.80);
 }
 /* ------------team---------------- */
 .team {
@@ -398,7 +435,7 @@ a {
 }
 .social-link:hover .social-icon,
 .social-link:focus .social-icon {
-  fill: #FFFFFF;
+  fill: #ffffff;
 }
 /* --------------------Portfolio--------------------------------------------- */
 .category {
@@ -444,7 +481,6 @@ a {
   margin: 0 -15px;
   row-gap: 30px;
   flex-wrap: wrap;
-  justify-content: center;
 }
 .category-column {
 }
@@ -454,17 +490,57 @@ a {
   min-width: 370px;
   display: flex;
 }
-
+/* --------- */
 .column-link {
-  display: block;
-  border: 1px solid #eee;
-  background-color: var(--background-light);
+  display: flex;
+  flex-direction: column;
 }
+
 .column-image {
+  display: block;
   max-width: 100%;
+}
+.category-column-active {
+  position: relative;
+
+}
+.category-column-active::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: var(--brend-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1s ease-in-out;
+}
+.column-link:hover .category-column-active::after {
+  opacity: 0.5;
+}
+.category-column-active > p {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 63px 24px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: calc(28 / 18 * 100%);
+  letter-spacing: 0.54px;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 1s ease-in-out;
+}
+.column-link:hover .category-column-active > p {
+  opacity: 1;
 }
 .column-text {
   padding: 20px 24px;
+  border: 1px solid #eee;
+  border-top: none;
+  flex: 1 1 auto;
 }
 .column-title {
   font-weight: 700;
@@ -494,7 +570,6 @@ a {
 }
 .clients-column {
   padding: 0 15px;
-
 }
 .clients-link {
   border-radius: 4px;
@@ -503,7 +578,7 @@ a {
   height: 92px;
   display: flex;
   align-items: center;
-justify-content: center;
+  justify-content: center;
 }
 .clients-link:hover,
 .clients-link:focus {
